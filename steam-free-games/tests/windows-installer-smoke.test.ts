@@ -8,10 +8,22 @@ const projectRoot = process.cwd();
 const smokeCheck = join(projectRoot, 'scripts', 'check-windows-installer.mjs');
 
 describe('Windows installer smoke check', () => {
-  it('fails when the expected installer is absent', () => {
+  it('passes when the built Windows installer is present and non-empty', () => {
     const result = spawnSync(process.execPath, [smokeCheck], { cwd: projectRoot, encoding: 'utf8' });
-    expect(result.status).not.toBe(0);
-    expect(result.stderr).toContain('Windows installer not found');
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain('Installer smoke check passed');
+  });
+
+  it('fails when the expected installer is absent', () => {
+    const root = mkdtempSync(join(tmpdir(), 'steam-free-games-installer-'));
+
+    try {
+      const result = spawnSync(process.execPath, [smokeCheck], { cwd: root, encoding: 'utf8' });
+      expect(result.status).not.toBe(0);
+      expect(result.stderr).toContain('Windows installer not found');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 
   it('passes only when a non-empty expected installer exists', () => {
