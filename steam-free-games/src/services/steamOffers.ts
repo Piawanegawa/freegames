@@ -20,8 +20,13 @@ function validOffer(value: unknown, now: Date): { item: Record<string, unknown>;
   const appId = parseSteamId(value.id);
   if (!appId || value.store !== "steam" || typeof value.title !== "string" || !value.title.trim()) return;
   if (typeof value.url !== "string" || !/^https:\/\/freetokeep\.gg\/game\/[a-z0-9-]+$/i.test(value.url)) return;
-  if (typeof value.originalPrice !== "string" || !/^\s*(?:\$\s*)?\d+(?:[.,]\d{1,2})?(?:\s*[A-Z]{3})?\s*$/.test(value.originalPrice)) return;
-  const numericPrice = Number(value.originalPrice.trim().replace(/[^\d.,]/g, "").replace(",", "."));
+  if (typeof value.originalPrice !== "string") return;
+  const price = /^\s*(?:\$\s*)?(\d+(?:\.\d{1,2})?|\d+,\d{1,2}|\d{1,3}(?:\.\d{3})+,\d{1,2})(?:\s*[A-Z]{3})?\s*$/.exec(value.originalPrice);
+  if (!price) return;
+  const numericText = price[1].includes(",")
+    ? price[1].replace(/\./g, "").replace(",", ".")
+    : price[1];
+  const numericPrice = Number(numericText);
   if (!Number.isFinite(numericPrice) || numericPrice <= 0) return;
   if (value.type !== undefined && value.type !== "keep") return;
   if (typeof value.startsAt !== "string" || typeof value.endsAt !== "string") return;

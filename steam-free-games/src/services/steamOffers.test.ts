@@ -30,6 +30,18 @@ describe("getLiveSteamOffers", () => {
   });
 
   it.each([
+    ["US dot decimal with dollar symbol", "$19.99", "$19.99"],
+    ["comma decimal with currency suffix", "19,99 EUR", "19,99 EUR"],
+    ["source-supported thousands and comma decimal", "1.234,56 EUR", "1.234,56 EUR"],
+  ])("preserves supported price format: %s", async (_label, originalPrice, expectedPrice) => {
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce(response({ generatedAt: now.toISOString(), count: 1, items: [{ ...offer, originalPrice }] }))
+      .mockResolvedValueOnce(response({ [123]: app }));
+    const results = await getLiveSteamOffers({ fetcher, now });
+    expect(results[0]?.usualPrice).toBe(expectedPrice);
+  });
+
+  it.each([
     ["free weekend type", { ...offer, type: "weekend" }],
     ["expired", { ...offer, endsAt: "2026-10-16T11:59:59Z" }],
     ["not live", { ...offer, startsAt: "2026-10-16T12:00:01Z" }],
@@ -38,6 +50,10 @@ describe("getLiveSteamOffers", () => {
     ["not available label", { ...offer, originalPrice: "N/A" }],
     ["nonnumeric price", { ...offer, originalPrice: "$twenty" }],
     ["malformed price", { ...offer, originalPrice: "$19.99 USD extra" }],
+    ["ambiguous comma grouping", { ...offer, originalPrice: "1,234" }],
+    ["ambiguous dot grouping", { ...offer, originalPrice: "1.234" }],
+    ["malformed grouped thousands", { ...offer, originalPrice: "12,34.56" }],
+    ["mixed grouping separators", { ...offer, originalPrice: "1,234.56" }],
     ["missing price", { ...offer, originalPrice: undefined }],
     ["incomplete timing", { ...offer, endsAt: null }],
   ])("excludes %s", async (_label, item) => {
