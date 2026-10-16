@@ -5,6 +5,7 @@ describe("isValidSteamStoreUrl", () => {
   it.each([
     "https://store.steampowered.com/app/123/",
     "https://store.steampowered.com/app/123/game-name/",
+    "https://store.steampowered.com/app/570/Dota_2/some/additional/path/?l=english",
     "https://store.steampowered.com/app/123/?l=english",
   ])("accepts a canonical HTTPS Steam store URL: %s", (url) => {
     expect(isValidSteamStoreUrl(url)).toBe(true);

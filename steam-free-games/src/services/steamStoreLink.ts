@@ -6,7 +6,7 @@ export function isValidSteamStoreUrl(value: string): boolean {
       url.port === "" &&
       url.username === "" &&
       url.password === "" &&
-      /^\/app\/\d+\/[\w-]*\/?$/.test(url.pathname);
+      /^\/app\/\d+(?:\/[\w-]+)*\/?$/.test(url.pathname);
   } catch {
     return false;
   }
