@@ -22,7 +22,7 @@ npm ci
 npm run test
 npm run build
 npm run tauri -- build --bundles nsis
-node scripts/check-windows-installer.mjs
+npm run check:windows-installer
 ```
 
 The bundle command runs the frontend production build and creates the NSIS installer at:
