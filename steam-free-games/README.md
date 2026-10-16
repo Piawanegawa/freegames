@@ -1,28 +1,39 @@
 # Steam Free Games
 
-A Windows desktop utility for discovering Steam games currently free to claim permanently.
+A Windows desktop utility for discovering Steam games currently free to claim permanently. It is an aggregator-backed aid, not an authoritative entitlement service; verify each Steam store page before claiming.
 
-## Development prerequisites
+## Install and run
 
-- Node.js and npm
-- Rust stable and Cargo (install with [rustup](https://rustup.rs/))
-- For Windows development, Microsoft C++ Build Tools and the WebView2 Runtime; see the [Tauri Windows prerequisites](https://tauri.app/start/prerequisites/#windows).
+Download and run the Windows installer produced for this app. On first run, the app checks current Steam offers and presents one of three states: loading, a list of qualifying results, a clear no-offers message, or a retrieval error. Each result includes the game name, short description, usual price, and a button that opens its Steam store page in your standard browser.
 
-Install dependencies and start the desktop app:
+## Build a Windows installer from source
 
-```sh
-npm install
-npm run tauri dev
-```
+Build on Windows 10 or later with:
 
-Run the frontend tests and production build:
+- Node.js (current LTS recommended) and npm
+- Rust stable with Cargo, installed through [rustup](https://rustup.rs/)
+- Microsoft C++ Build Tools with the MSVC C++ workload and Windows 10/11 SDK
+- Microsoft Edge WebView2 Runtime (normally present on supported Windows 10 systems)
 
-```sh
-npm test
+See the [Tauri Windows prerequisites](https://tauri.app/start/prerequisites/#windows) and install the Rust `stable-x86_64-pc-windows-msvc` toolchain. From this directory, run:
+
+```powershell
+npm ci
+npm run test
 npm run build
+npm run tauri -- build --bundles nsis
+node scripts/check-windows-installer.mjs
 ```
 
-`npm run build` verifies the React + TypeScript frontend. A desktop launch or Windows package additionally requires the Rust and Windows prerequisites above.
+The bundle command runs the frontend production build and creates the NSIS installer at:
+
+```text
+src-tauri/target/release/bundle/nsis/steam-free-games_0.1.0_x64-setup.exe
+```
+
+The smoke check fails unless that exact expected installer exists as a non-empty file. If a build changes the version, set `WINDOWS_INSTALLER_PATH` to the actual expected path, relative to this directory, when invoking the check. This check establishes only artifact presence and size; it does not validate the installer or replace installing it on Windows and manually testing launch, offers, and browser links.
+
+For development, run `npm run tauri -- dev`. `npm test` runs the complete frontend suite and `npm run build` type-checks and builds the frontend. Native Rust tests can be run with `cargo test --manifest-path src-tauri/Cargo.toml` when the Rust toolchain is installed.
 
 ## Steam offer source and limitations
 

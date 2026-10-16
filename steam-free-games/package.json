@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "check:windows-installer": "node scripts/check-windows-installer.mjs"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
