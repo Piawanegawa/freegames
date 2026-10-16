@@ -19,11 +19,11 @@
 
 ## Task 2: Research and implement Steam free-to-keep acquisition
 
-- [ ] **Step 1:** Research and document a reliable source, verifying normal paid price, current zero price, live status, permanent claim eligibility, description, usage limits, and terms.
-- [ ] **Step 2:** Write failing fixture-based eligibility tests: include verified permanent free claim; exclude expired, free-to-play, weekend, trial, nonzero, missing-price, ambiguous-claim, and malformed records.
-- [ ] **Step 3:** Implement `getLiveSteamOffers(): Promise<GameOffer[]>`, keeping source structures isolated and excluding records without evidence for every required qualification.
-- [ ] **Step 4:** Verify deterministic tests for all exclusions, valid empty responses, and retrieval/parse failures remaining distinct errors.
-- [ ] **Step 5:** Commit the adapter, tests, and source rationale in README. If no source can establish permanent claim status reliably, report blocked rather than showing uncertain results.
+- [x] **Step 1:** Research and document a reliable source, verifying normal paid price, current zero price, live status, permanent claim eligibility, description, usage limits, and terms.
+- [x] **Step 2:** Write failing fixture-based eligibility tests: include verified permanent free claim; exclude expired, free-to-play, weekend, trial, nonzero, missing-price, ambiguous-claim, and malformed records.
+- [x] **Step 3:** Implement `getLiveSteamOffers(): Promise<GameOffer[]>`, keeping source structures isolated and excluding records without evidence for every required qualification.
+- [x] **Step 4:** Verify deterministic tests for all exclusions, valid empty responses, and retrieval/parse failures remaining distinct errors.
+- [x] **Step 5:** Commit the adapter, tests, and source rationale in README. If no source can establish permanent claim status reliably, report blocked rather than showing uncertain results.
 
 ## Task 3: Present offers and retrieval states
 

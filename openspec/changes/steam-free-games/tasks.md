@@ -5,8 +5,8 @@
 
 ## 2. Steam offer acquisition
 
-- [ ] 2.1 Research and document a reliable source for live Steam free-to-keep offers, normal price, description, and permanent-claim eligibility.
-- [ ] 2.2 Implement Steam retrieval, normalization, and conservative qualification filtering with deterministic tests for expired, free-to-play, weekend, trial, nonzero, and incomplete records.
+- [x] 2.1 Research and document a reliable source for live Steam free-to-keep offers, normal price, description, and permanent-claim eligibility.
+- [x] 2.2 Implement Steam retrieval, normalization, and conservative qualification filtering with deterministic tests for expired, free-to-play, weekend, trial, nonzero, and incomplete records.
 
 ## 3. Offer presentation
 
