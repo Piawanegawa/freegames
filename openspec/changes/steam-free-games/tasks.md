@@ -17,3 +17,5 @@
 
 - [x] 4.1 Validate HTTPS Steam store URLs and open them in the operating system's standard browser using narrow Tauri permissions.
 - [x] 4.2 Build and verify a double-clickable Windows 10 application package, and document setup, source limitations, and launch instructions.
+
+Task 4.2 verification note: native Windows NSIS build and artifact presence/size smoke check passed; see change retrospective / Task 5 report for evidence. Interactive installer, launch, live runtime states, and external-browser behavior remain unverified.
