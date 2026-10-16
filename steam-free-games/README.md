@@ -4,7 +4,7 @@ A Windows desktop utility for discovering Steam games currently free to claim pe
 
 ## Install and run
 
-Download and run the Windows installer produced for this app. On first run, the app checks current Steam offers and presents one of three states: loading, a list of qualifying results, a clear no-offers message, or a retrieval error. Each result includes the game name, short description, usual price, and a button that opens its Steam store page in your standard browser.
+Download and run the Windows installer produced for this app. On first run, the app checks current Steam offers and presents one of four states: loading, a list of qualifying results, a clear no-offers message, or a retrieval error. Each result includes the game name, short description, usual price, and a button that opens its Steam store page in your standard browser.
 
 ## Build a Windows installer from source
 
