@@ -34,6 +34,10 @@ describe("getLiveSteamOffers", () => {
     ["expired", { ...offer, endsAt: "2026-10-16T11:59:59Z" }],
     ["not live", { ...offer, startsAt: "2026-10-16T12:00:01Z" }],
     ["zero usual price", { ...offer, originalPrice: "$0.00" }],
+    ["free label", { ...offer, originalPrice: "Free" }],
+    ["not available label", { ...offer, originalPrice: "N/A" }],
+    ["nonnumeric price", { ...offer, originalPrice: "$twenty" }],
+    ["malformed price", { ...offer, originalPrice: "$19.99 USD extra" }],
     ["missing price", { ...offer, originalPrice: undefined }],
     ["incomplete timing", { ...offer, endsAt: null }],
   ])("excludes %s", async (_label, item) => {
