@@ -1,0 +1,4 @@
+schema: superpowers-bridge-opencode
+created: 2026-10-16
+goal: Show current Steam free-to-keep offers with title, description, usual
+  price, and a default-browser link.
