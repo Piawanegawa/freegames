@@ -10,8 +10,8 @@
 
 ## 3. Offer presentation
 
-- [ ] 3.1 Implement loading, offer-list, successful-empty, and retrieval-error states with UI tests.
-- [ ] 3.2 Display game name, short description, usual price, and Steam page link for each qualifying offer.
+- [x] 3.1 Implement loading, offer-list, successful-empty, and retrieval-error states with UI tests.
+- [x] 3.2 Display game name, short description, usual price, and Steam page link for each qualifying offer.
 
 ## 4. Safe link opening and Windows package
 
