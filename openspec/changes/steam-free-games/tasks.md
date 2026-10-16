@@ -15,5 +15,5 @@
 
 ## 4. Safe link opening and Windows package
 
-- [ ] 4.1 Validate HTTPS Steam store URLs and open them in the operating system's standard browser using narrow Tauri permissions.
+- [x] 4.1 Validate HTTPS Steam store URLs and open them in the operating system's standard browser using narrow Tauri permissions.
 - [ ] 4.2 Build and verify a double-clickable Windows 10 application package, and document setup, source limitations, and launch instructions.
