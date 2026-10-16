@@ -1,7 +1,7 @@
 ## 1. Desktop application foundation
 
-- [ ] 1.1 Scaffold a Tauri + React + TypeScript Windows desktop application and verify development launch/build prerequisites.
-- [ ] 1.2 Add a normalized storefront-independent offer model and test contract.
+- [x] 1.1 Scaffold a Tauri + React + TypeScript Windows desktop application and verify development launch/build prerequisites.
+- [x] 1.2 Add a normalized storefront-independent offer model and test contract.
 
 ## 2. Steam offer acquisition
 
