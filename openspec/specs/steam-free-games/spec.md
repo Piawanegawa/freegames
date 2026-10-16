@@ -1,7 +1,7 @@
 # steam-free-games Specification
 
 ## Purpose
-TBD - created by archiving change steam-free-games. Update Purpose after archive.
+Discover currently live Steam games normally sold for money that can be claimed permanently for free, with clear offer details and safe links to the Steam store.
 
 ## Requirements
 
